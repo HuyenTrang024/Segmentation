@@ -30,5 +30,6 @@ Các kỹ thuật cơ bản như lật ngang, xoay ảnh, thay đổi độ sán
 - **Nhiễu speckle** – một dạng nhiễu phổ biến trong siêu âm do sự phản xạ không đều của sóng âm.
 - **Hiệu ứng haze/mờ**, mô phỏng ảnh có độ tương phản kém, thường gặp ở bệnh nhân có mô mềm dày.
 - **Bóng âm** (acoustic shadow) – mô phỏng vùng tối phía sau các vật thể cản âm như xương hoặc sỏi.
+  
 Link dowload OTU2D dataset: https://lnk.ink/y5gk1
 
