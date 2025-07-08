@@ -1,33 +1,34 @@
-# Phân đoạn ảnh siêu âm bằng mô hình U-Net kết hợp tăng cường dữ liệu chuyên biệt
+# Phân đoạn ảnh siêu âm buồng trứng bằng mô hình U-Net kết hợp tăng cường dữ liệu chuyên biệt
 
-Dự án này triển khai hệ thống phân đoạn khối u buồng trứng từ ảnh siêu âm bằng mô hình U-Net. Để cải thiện hiệu suất và độ tổng quát của mô hình, chúng tôi áp dụng cả các kỹ thuật tăng cường dữ liệu **thông thường** và **chuyên biệt cho ảnh siêu âm** trong quá trình huấn luyện.
+Dự án này triển khai một hệ thống phân đoạn ảnh siêu âm phục vụ cho việc chẩn đoán khối u buồng trứng, sử dụng mô hình U-Net – một kiến trúc mạng nơ-ron phổ biến trong lĩnh vực phân đoạn ảnh y tế. Điểm nổi bật của dự án nằm ở việc kết hợp U-Net với một quy trình tăng cường dữ liệu chuyên biệt cho ảnh siêu âm, từ đó nâng cao độ chính xác và khả năng khái quát hóa của mô hình trong môi trường lâm sàng thực tế.
 
 ---
 
 ## Mục tiêu
 
-Ảnh siêu âm là công cụ chẩn đoán phổ biến trong lâm sàng do chi phí thấp và độ an toàn cao. Tuy nhiên, chúng thường gặp vấn đề về nhiễu, độ tương phản kém và bóng âm. Việc tăng cường dữ liệu hợp lý giúp mô hình học được tốt hơn trong môi trường thực tế.
+Ảnh siêu âm là một trong những phương thức chẩn đoán phổ biến, có chi phí thấp và không xâm lấn. Tuy nhiên, ảnh siêu âm thường bị ảnh hưởng bởi nhiễu, bóng âm, và các hiện tượng vật lý gây giảm chất lượng hình ảnh, khiến việc phân đoạn vùng tổn thương trở nên khó khăn. Dự án này nhằm xây dựng một mô hình phân đoạn chính xác, có khả năng hoạt động ổn định ngay cả khi dữ liệu đầu vào có chất lượng thấp hoặc không đồng nhất. Thông qua việc kết hợp giữa kiến trúc mạng mạnh mẽ và các kỹ thuật tăng cường dữ liệu mô phỏng đặc điểm thực tế của ảnh siêu âm, chúng tôi kỳ vọng mô hình sẽ hỗ trợ tốt cho các bác sĩ trong quá trình phân tích và chẩn đoán bệnh.
 
 ---
 
 ## Kiến trúc mô hình
 
-Mô hình sử dụng kiến trúc U-Net cổ điển:
+Mô hình sử dụng kiến trúc U-Net cổ điển – được thiết kế đặc biệt cho các tác vụ phân đoạn ảnh y tế. U-Net bao gồm hai phần chính: nhánh mã hóa (encoder) và nhánh giải mã (decoder), được kết nối bằng các liên kết tắt (skip connections). Nhánh encoder giúp trích xuất các đặc trưng từ ảnh đầu vào thông qua các lớp convolution và pooling, trong khi nhánh decoder dần phục hồi độ phân giải bằng cách sử dụng các lớp upsampling và convolution. Việc sử dụng skip connection giúp bảo tồn thông tin vị trí và chi tiết, rất quan trọng đối với phân đoạn chính xác trong ảnh y tế.
 
-- **Encoder**: Convolution → ReLU → MaxPooling
-- **Bottleneck**
-- **Decoder**: Transposed Convolution + Skip Connection
-- **Output**: 1 kênh (mặt nạ nhị phân), dùng hàm sigmoid
+Mô hình đầu ra là một bản đồ mặt nạ nhị phân, đánh dấu các vùng nghi ngờ khối u, sử dụng hàm kích hoạt sigmoid ở lớp cuối để cho xác suất thuộc về vùng cần phân đoạn.
 
 ---
 
-## Tăng cường dữ liệu (Data Augmentation)
+## Tăng cường dữ liệu
 
-### Các kỹ thuật tăng cường chuyên biệt cho ảnh siêu âm:
-- **Nhiễu Gaussian (Gaussian Noise)**  
-- **Mô phỏng nhiễu speckle (Speckle Noise)**
-- **Hiệu ứng mờ/haze** – mô phỏng ảnh siêu âm độ tương phản thấp
-- **Biến dạng đàn hồi (Elastic Deformation)** – mô phỏng rung động đầu dò
-- **Bóng âm (Acoustic Shadow Augmentation)** – mô phỏng hiệu ứng vật lý
+Một trong những yếu tố quan trọng giúp mô hình hoạt động tốt trên dữ liệu ảnh siêu âm là việc áp dụng các kỹ thuật tăng cường dữ liệu phù hợp. Trong dự án này, chúng tôi áp dụng kỹ thuật:
+
+### Tăng cường dữ liệu chuyên biệt cho ảnh siêu âm:
+
+
+Các kỹ thuật cơ bản như lật ngang, xoay ảnh, thay đổi độ sáng không mô phỏng được hiện tượng phản xạ mà đầu dò máy siêu âm nhận được do đó tôi áp dụng các kỹ thuật tăng cường mô phỏng các hiện tượng vật lý xảy ra trong ảnh siêu âm thực tế:
+- **Nhiễu Gaussian** để mô phỏng tín hiệu nhiễu điện tử.
+- **Nhiễu speckle** – một dạng nhiễu phổ biến trong siêu âm do sự phản xạ không đều của sóng âm.
+- **Hiệu ứng haze/mờ**, mô phỏng ảnh có độ tương phản kém, thường gặp ở bệnh nhân có mô mềm dày.
+- **Bóng âm** (acoustic shadow) – mô phỏng vùng tối phía sau các vật thể cản âm như xương hoặc sỏi.
 
 
