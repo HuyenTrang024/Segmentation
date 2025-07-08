@@ -32,4 +32,26 @@ Các kỹ thuật cơ bản như lật ngang, xoay ảnh, thay đổi độ sán
 - **Bóng âm** (acoustic shadow) – mô phỏng vùng tối phía sau các vật thể cản âm như xương hoặc sỏi.
   
 Link dowload OTU2D dataset: https://lnk.ink/y5gk1
+| **Tổng số ảnh** | **Huấn luyện (Train)** | **Kiểm tra (Test)** | **Xác thực (Validation)** |
+|------------------|-------------------------|-----------------------|-----------------------------|
+| 1469             | 1177                    | 147                   | 147                         |
+
+---
+
+### 🔍 Số lượng theo loại u buồng trứng
+
+| STT | Loại u buồng trứng                | Tổng ảnh | Train | Validation |
+|-----|-----------------------------------|----------|-------|------------|
+| 1   | Chocolate cyst                    | 336      | 226   | 110        |
+| 2   | Mucinous cystadenoma              | 104      | 71    | 33         |
+| 3   | High-grade serous cystadenoma     | 53       | 38    | 15         |
+| 4   | Ovary normal                      | 267      | 180   | 87         |
+| 5   | Simple cyst                       | 66       | 47    | 19         |
+| 6   | Theca cell tumor                  | 88       | 57    | 31         |
+| 7   | Teratoma                          | 336      | 228   | 108        |
+| 8   | Serous cystadenoma                | 219      | 153   | 66         |
+|     | **Tổng cộng**                     | **1469** | **1000** | **469**    |
+
+---
+
 
