@@ -37,7 +37,7 @@ Link dowload OTU2D dataset: https://lnk.ink/y5gk1
 | 1469             | 1177                    | 147                   | 147                         |
 
 
-### Số lượng theo loại u buồng trứng
+Số lượng theo loại u buồng trứng
 
 | STT | Loại u buồng trứng                | Tổng ảnh | Train | Validation |
 |-----|-----------------------------------|----------|-------|------------|
