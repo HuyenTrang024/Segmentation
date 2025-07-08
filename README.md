@@ -4,13 +4,13 @@ Dự án này triển khai hệ thống phân đoạn khối u buồng trứng t
 
 ---
 
-## 🎯 Mục tiêu
+## Mục tiêu
 
 Ảnh siêu âm là công cụ chẩn đoán phổ biến trong lâm sàng do chi phí thấp và độ an toàn cao. Tuy nhiên, chúng thường gặp vấn đề về nhiễu, độ tương phản kém và bóng âm. Việc tăng cường dữ liệu hợp lý giúp mô hình học được tốt hơn trong môi trường thực tế.
 
 ---
 
-## 🏗️ Kiến trúc mô hình
+## Kiến trúc mô hình
 
 Mô hình sử dụng kiến trúc U-Net cổ điển:
 
@@ -21,14 +21,9 @@ Mô hình sử dụng kiến trúc U-Net cổ điển:
 
 ---
 
-## 🔁 Tăng cường dữ liệu (Data Augmentation)
+## Tăng cường dữ liệu (Data Augmentation)
 
-### ✅ Các kỹ thuật tăng cường dữ liệu cơ bản:
-- Lật ngang / dọc
-- Xoay ngẫu nhiên
-- Phóng to / thu nhỏ
-
-### 🩺 Các kỹ thuật tăng cường chuyên biệt cho ảnh siêu âm:
+### Các kỹ thuật tăng cường chuyên biệt cho ảnh siêu âm:
 - **Nhiễu Gaussian (Gaussian Noise)**  
 - **Mô phỏng nhiễu speckle (Speckle Noise)**
 - **Hiệu ứng mờ/haze** – mô phỏng ảnh siêu âm độ tương phản thấp
